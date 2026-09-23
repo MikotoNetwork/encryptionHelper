@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'top.misaknetwork.encryption.helper'
+    compileSdk 34
+    
+
+    defaultConfig {
+        applicationId "top.misaknetwork.encryption.helper"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "Version 1.0"
+        
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+    }
+
+    
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
+
+    signingConfigs {
+    
+        
+        release {
+            // def ksPath = System.getenv("KEYSTORE_FILE")
+               //     ?: "${System.getProperty('user.home')}/biliXia-release.jks"
+            // storeFile file(ksPath)
+            // storePassword System.getenv("KEYSTORE_PASSWORD")
+           //  keyAlias System.getenv("KEY_ALIAS")
+            // keyPassword System.getenv("KEY_PASSWORD")
+            // 彻底堵死APK V1签名
+              enableV1Signing false
+             // 明确开启APK V2签名
+             enableV2Signing true
+            // 明确开启APK V3签名
+              enableV3Signing true
+              // 明确开启APK V4签名
+              enableV4Signing true
+             
+            
+            
+        }
+        debug {
+        // 彻底堵死APK V1签名
+         enableV1Signing false
+         // 明确开启APK V2签名
+         enableV2Signing true
+         // 明确开启APK V3签名
+         enableV3Signing true
+         // 明确开启APK V4签名
+         enableV4Signing true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // signingConfig signingConfigs.release
+        }
+        debug {
+            // signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.activity:activity:1.8.2'
+   
+}
