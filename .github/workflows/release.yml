@@ -42,7 +42,7 @@ jobs:
       - name: 重命名 APK
         run: |
           mkdir -p out
-          cp app/build/outputs/apk/release/app-release.apk \
+          cp app/build/outputs/apk/release/*.apk \
              out/encryptionHelper-${GITHUB_REF_NAME}.apk
 
       - name: 创建 Release
