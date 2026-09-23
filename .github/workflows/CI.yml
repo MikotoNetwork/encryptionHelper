@@ -35,11 +35,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: 编译 Debug APK
-        env:
-          KEYSTORE_FILE: /home/runner/biliXia-release.jks
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        
         run: ./gradlew assembleDebug --stacktrace
 
       - name: 上传 APK
