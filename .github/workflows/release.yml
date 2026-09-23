@@ -31,11 +31,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      
+
       - name: 给 gradlew 执行权限
         run: chmod +x gradlew
 
       - name: 编译 Release APK
-        env:
         run: ./gradlew assembleRelease --stacktrace
 
       - name: 重命名 APK
@@ -47,5 +48,5 @@ jobs:
       - name: 创建 Release
         uses: softprops/action-gh-release@v2
         with:
-          files: out/BiliXia-*.apk
+          files: out/encryptionHelper-*.apk
           generate_release_notes: true
